@@ -335,6 +335,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key:
+                                        ValueKey('SignUp-ConfirmPassword_p9kl'),
                                     controller: _model
                                         .signUpConfirmPasswordTextController,
                                     focusNode:
