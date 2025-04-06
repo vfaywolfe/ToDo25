@@ -33,16 +33,13 @@ void main() async {
     await tester.pumpWidget(const MyApp());
 
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    await tester.tap(find.byKey(const ValueKey('LoginTab_sq9s')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
-        find.byKey(const ValueKey('Login-email_1zpq')), 'test@uri.edu');
+        find.byKey(const ValueKey('SignUp-Email_78cr')), 'vic1@uri.edu');
     await tester.enterText(
-        find.byKey(const ValueKey('Login-Password_hf3p')), 'password');
-    FocusManager.instance.primaryFocus?.unfocus();
-    await tester.tap(find.bySemanticsLabel(RegExp('LoginButton')));
+        find.byKey(const ValueKey('Signup-Password_7l9f')), 'password');
+    await tester.tap(find.byKey(const ValueKey('SignUp-Button_p36c')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
-    expect(find.text('Tasks'), findsWidgets);
+    expect(find.text('Profile'), findsWidgets);
   });
 }
 
