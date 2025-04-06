@@ -137,6 +137,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('SignUp-Email_78cr'),
                                     controller:
                                         _model.signUpEmailTextController,
                                     focusNode: _model.signUpEmailFocusNode,
@@ -238,6 +239,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('Signup-Password_7l9f'),
                                     controller:
                                         _model.signupPasswordTextController,
                                     focusNode: _model.signupPasswordFocusNode,
@@ -678,6 +680,7 @@ class _LoginWidgetState extends State<LoginWidget>
                       ),
                     if (_model.tabBarCurrentIndex == 0)
                       FFButtonWidget(
+                        key: ValueKey('SignUp-Button_p36c'),
                         onPressed: () async {
                           GoRouter.of(context).prepareAuthEvent();
                           if (_model.signupPasswordTextController.text !=
