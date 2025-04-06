@@ -640,50 +640,6 @@ class _LoginWidgetState extends State<LoginWidget>
                 ),
                 Stack(
                   children: [
-                    if (_model.tabBarCurrentIndex == 1)
-                      Semantics(
-                        label: 'LoginButton',
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              _model.loginEmailTextController.text,
-                              _model.loginPasswordTextController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
-
-                            context.goNamedAuth(
-                                TasksWidget.routeName, context.mounted);
-                          },
-                          text: 'Login',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 70.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                        ),
-                      ),
                     if (_model.tabBarCurrentIndex == 0)
                       FFButtonWidget(
                         key: ValueKey('SignUp-Button_p36c'),
@@ -744,6 +700,50 @@ class _LoginWidgetState extends State<LoginWidget>
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                           borderRadius: BorderRadius.circular(24.0),
+                        ),
+                      ),
+                    if (_model.tabBarCurrentIndex == 1)
+                      Semantics(
+                        label: 'LoginButton',
+                        child: FFButtonWidget(
+                          onPressed: () async {
+                            GoRouter.of(context).prepareAuthEvent();
+
+                            final user = await authManager.signInWithEmail(
+                              context,
+                              _model.loginEmailTextController.text,
+                              _model.loginPasswordTextController.text,
+                            );
+                            if (user == null) {
+                              return;
+                            }
+
+                            context.goNamedAuth(
+                                TasksWidget.routeName, context.mounted);
+                          },
+                          text: 'Login',
+                          options: FFButtonOptions(
+                            width: double.infinity,
+                            height: 70.0,
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 0.0, 16.0, 0.0),
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            color: FlutterFlowTheme.of(context).primary,
+                            textStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  letterSpacing: 0.0,
+                                ),
+                            elevation: 0.0,
+                            borderSide: BorderSide(
+                              color: FlutterFlowTheme.of(context).primaryText,
+                            ),
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
                         ),
                       ),
                   ],
