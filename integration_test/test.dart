@@ -39,7 +39,7 @@ void main() async {
         find.byKey(const ValueKey('Login-email_1zpq')), 'test@uri.edu');
     await tester.enterText(
         find.byKey(const ValueKey('Login-Password_hf3p')), 'password');
-    await tester.tap(find.byKey(const ValueKey('SignUp-Button_p36c')));
+    await tester.tap(find.bySemanticsLabel(RegExp('LoginButton')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     expect(find.text('Tasks'), findsWidgets);
   });
