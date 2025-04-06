@@ -118,6 +118,7 @@ class _LoginWidgetState extends State<LoginWidget>
                               text: 'Sign Up',
                             ),
                             Tab(
+                              key: ValueKey('LoginTab_sq9s'),
                               text: 'Login',
                             ),
                           ],
