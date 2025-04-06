@@ -33,8 +33,6 @@ void main() async {
     await tester.pumpWidget(const MyApp());
 
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
-    await tester.tap(find.byKey(const ValueKey('LoginTab_sq9s')));
-    await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     await tester.enterText(
         find.byKey(const ValueKey('Login-email_1zpq')), 'test@uri.edu');
     await tester.enterText(
