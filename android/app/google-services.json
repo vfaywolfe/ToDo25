@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "993046403871",
+    "project_id": "to-do25-vxpfun",
+    "storage_bucket": "to-do25-vxpfun.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993046403871:android:4121dcf6a88a303ac7ee2a",
+        "android_client_info": {
+          "package_name": "com.mycompany.todo25"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXtXHxwPj47_MhuFDhpjf763B4ATcScjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
