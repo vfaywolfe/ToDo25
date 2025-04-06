@@ -118,6 +118,7 @@ class _LoginWidgetState extends State<LoginWidget>
                               text: 'Sign Up',
                             ),
                             Tab(
+                              key: ValueKey('LoginTab_sq9s'),
                               text: 'Login',
                             ),
                           ],
@@ -439,6 +440,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('Login-email_1zpq'),
                                     controller: _model.loginEmailTextController,
                                     focusNode: _model.loginEmailFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
@@ -539,6 +541,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('Login-Password_hf3p'),
                                     controller:
                                         _model.loginPasswordTextController,
                                     focusNode: _model.loginPasswordFocusNode,
@@ -638,6 +641,50 @@ class _LoginWidgetState extends State<LoginWidget>
                     ],
                   ),
                 ),
+                if (_model.tabBarCurrentIndex == 1)
+                  Semantics(
+                    label: 'LoginButton',
+                    child: FFButtonWidget(
+                      key: ValueKey('Login-Button_tvow'),
+                      onPressed: () async {
+                        GoRouter.of(context).prepareAuthEvent();
+
+                        final user = await authManager.signInWithEmail(
+                          context,
+                          _model.loginEmailTextController.text,
+                          _model.loginPasswordTextController.text,
+                        );
+                        if (user == null) {
+                          return;
+                        }
+
+                        context.goNamedAuth(
+                            TasksWidget.routeName, context.mounted);
+                      },
+                      text: 'Login',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 70.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).primary,
+                        textStyle: FlutterFlowTheme.of(context)
+                            .labelMedium
+                            .override(
+                              fontFamily: 'Inter',
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              letterSpacing: 0.0,
+                            ),
+                        elevation: 0.0,
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).primaryText,
+                        ),
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                    ),
+                  ),
                 Stack(
                   children: [
                     if (_model.tabBarCurrentIndex == 0)
@@ -700,50 +747,6 @@ class _LoginWidgetState extends State<LoginWidget>
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),
                           borderRadius: BorderRadius.circular(24.0),
-                        ),
-                      ),
-                    if (_model.tabBarCurrentIndex == 1)
-                      Semantics(
-                        label: 'LoginButton',
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            GoRouter.of(context).prepareAuthEvent();
-
-                            final user = await authManager.signInWithEmail(
-                              context,
-                              _model.loginEmailTextController.text,
-                              _model.loginPasswordTextController.text,
-                            );
-                            if (user == null) {
-                              return;
-                            }
-
-                            context.goNamedAuth(
-                                TasksWidget.routeName, context.mounted);
-                          },
-                          text: 'Login',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 70.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Inter',
-                                  color:
-                                      FlutterFlowTheme.of(context).primaryText,
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 0.0,
-                            borderSide: BorderSide(
-                              color: FlutterFlowTheme.of(context).primaryText,
-                            ),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
                         ),
                       ),
                   ],

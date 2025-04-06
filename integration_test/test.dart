@@ -27,7 +27,7 @@ void main() async {
     await authManager.signOut();
   });
 
-  testWidgets('Login Test', (WidgetTester tester) async {
+  testWidgets('Account Creation Test', (WidgetTester tester) async {
     _overrideOnError();
 
     await tester.pumpWidget(const MyApp());
@@ -42,6 +42,22 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('SignUp-Button_p36c')));
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     expect(find.text('Profile'), findsWidgets);
+  });
+
+  testWidgets('Login Test', (WidgetTester tester) async {
+    _overrideOnError();
+
+    await tester.pumpWidget(const MyApp());
+
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    await tester.tap(find.byKey(const ValueKey('LoginTab_sq9s')));
+    await tester.enterText(
+        find.byKey(const ValueKey('Login-email_1zpq')), 'test@uri.edu');
+    await tester.enterText(
+        find.byKey(const ValueKey('Login-Password_hf3p')), 'password');
+    await tester.tap(find.byKey(const ValueKey('Login-Button_tvow')));
+    await tester.pumpAndSettle(const Duration(milliseconds: 5000));
+    expect(find.text('Tasks'), findsWidgets);
   });
 }
 
