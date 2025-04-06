@@ -138,7 +138,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    key: ValueKey('SignUp-Email_78cr'),
                                     controller:
                                         _model.signUpEmailTextController,
                                     focusNode: _model.signUpEmailFocusNode,
@@ -240,7 +239,6 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
-                                    key: ValueKey('Signup-Password_7l9f'),
                                     controller:
                                         _model.signupPasswordTextController,
                                     focusNode: _model.signupPasswordFocusNode,
@@ -438,6 +436,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('Login-email_1zpq'),
                                     controller: _model.loginEmailTextController,
                                     focusNode: _model.loginEmailFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
@@ -538,6 +537,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 Container(
                                   width: double.infinity,
                                   child: TextFormField(
+                                    key: ValueKey('Login-Password_hf3p'),
                                     controller:
                                         _model.loginPasswordTextController,
                                     focusNode: _model.loginPasswordFocusNode,

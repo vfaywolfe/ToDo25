@@ -36,9 +36,9 @@ void main() async {
     await tester.tap(find.byKey(const ValueKey('LoginTab_sq9s')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     await tester.enterText(
-        find.byKey(const ValueKey('SignUp-Email_78cr')), 'test@uri.edu');
+        find.byKey(const ValueKey('Login-email_1zpq')), 'test@uri.edu');
     await tester.enterText(
-        find.byKey(const ValueKey('Signup-Password_7l9f')), 'password');
+        find.byKey(const ValueKey('Login-Password_hf3p')), 'password');
     await tester.tap(find.byKey(const ValueKey('SignUp-Button_p36c')));
     await tester.pumpAndSettle(const Duration(milliseconds: 10000));
     expect(find.text('Tasks'), findsWidgets);
