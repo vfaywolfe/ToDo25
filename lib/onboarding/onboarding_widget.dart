@@ -9,6 +9,7 @@ import '/flutter_flow/upload_data.dart';
 import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
@@ -32,6 +33,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
     super.initState();
     _model = createModel(context, () => OnboardingModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'onboarding'});
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
@@ -71,8 +73,21 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       'Profile',
                       style:
                           FlutterFlowTheme.of(context).headlineLarge.override(
-                                fontFamily: 'Inter',
+                                font: GoogleFonts.inter(
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .headlineLarge
+                                      .fontStyle,
+                                ),
                                 letterSpacing: 0.0,
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .fontStyle,
                               ),
                     ),
                     Align(
@@ -83,6 +98,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'ONBOARDING_PAGE_Stack_uiymrr6x_ON_TAP');
+                          logFirebaseEvent('Stack_upload_media_to_firebase');
                           final selectedMedia =
                               await selectMediaWithSourceBottomSheet(
                             context: context,
@@ -92,7 +110,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           if (selectedMedia != null &&
                               selectedMedia.every((m) =>
                                   validateFileFormat(m.storagePath, context))) {
-                            safeSetState(() => _model.isDataUploading = true);
+                            safeSetState(() =>
+                                _model.isDataUploading_profilePhoto = true);
                             var selectedUploadedFiles = <FFUploadedFile>[];
 
                             var downloadUrls = <String>[];
@@ -104,6 +123,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                         height: m.dimensions?.height,
                                         width: m.dimensions?.width,
                                         blurHash: m.blurHash,
+                                        originalFilename: m.originalFilename,
                                       ))
                                   .toList();
 
@@ -117,15 +137,16 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                   .map((u) => u!)
                                   .toList();
                             } finally {
-                              _model.isDataUploading = false;
+                              _model.isDataUploading_profilePhoto = false;
                             }
                             if (selectedUploadedFiles.length ==
                                     selectedMedia.length &&
                                 downloadUrls.length == selectedMedia.length) {
                               safeSetState(() {
-                                _model.uploadedLocalFile =
+                                _model.uploadedLocalFile_profilePhoto =
                                     selectedUploadedFiles.first;
-                                _model.uploadedFileUrl = downloadUrls.first;
+                                _model.uploadedFileUrl_profilePhoto =
+                                    downloadUrls.first;
                               });
                             } else {
                               safeSetState(() {});
@@ -133,9 +154,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                             }
                           }
 
+                          logFirebaseEvent('Stack_backend_call');
+
                           await currentUserReference!
                               .update(createUsersRecordData(
-                            photoUrl: _model.uploadedFileUrl,
+                            photoUrl: _model.uploadedFileUrl_profilePhoto,
                           ));
                         },
                         child: Stack(
@@ -153,7 +176,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: Image.network(
-                                      _model.uploadedFileUrl,
+                                      _model.uploadedFileUrl_profilePhoto,
                                     ).image,
                                   ),
                                   borderRadius: BorderRadius.circular(68.0),
@@ -201,14 +224,40 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           isDense: true,
                           labelStyle:
                               FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .fontStyle,
                                   ),
                           hintText: 'Name...',
                           hintStyle:
                               FlutterFlowTheme.of(context).labelLarge.override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .labelLarge
+                                          .fontStyle,
+                                    ),
                                     letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .fontStyle,
                                   ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
@@ -257,8 +306,21 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               : null,
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                         keyboardType: TextInputType.name,
                         cursorColor: FlutterFlowTheme.of(context).primaryText,
@@ -268,6 +330,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'ONBOARDING_SetBirthday-Button_ON_TAP');
+                        logFirebaseEvent('SetBirthday-Button_date_time_picker');
                         final _datePickedDate = await showDatePicker(
                           context: context,
                           initialDate: getCurrentTimestamp,
@@ -284,10 +349,18 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               headerTextStyle: FlutterFlowTheme.of(context)
                                   .headlineLarge
                                   .override(
-                                    fontFamily: 'Inter',
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .headlineLarge
+                                          .fontStyle,
+                                    ),
                                     fontSize: 32.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .fontStyle,
                                   ),
                               pickerBackgroundColor:
                                   FlutterFlowTheme.of(context)
@@ -335,9 +408,22 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         textStyle: FlutterFlowTheme.of(context)
                             .labelMedium
                             .override(
-                              fontFamily: 'Inter',
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context).primaryText,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .fontStyle,
                             ),
                         elevation: 0.0,
                         borderSide: BorderSide(
@@ -351,10 +437,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('ONBOARDING_COMPLETE_PROFILE_BTN_ON_TAP');
+                  logFirebaseEvent('Button_backend_call');
+
                   await currentUserReference!.update(createUsersRecordData(
                     birthday: _model.datePicked,
                     displayName: _model.nameTextController.text,
                   ));
+                  logFirebaseEvent('Button_navigate_to');
 
                   context.goNamed(TasksWidget.routeName);
                 },
@@ -367,9 +457,20 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
                         color: FlutterFlowTheme.of(context).primaryText,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
                       ),
                   elevation: 0.0,
                   borderSide: BorderSide(

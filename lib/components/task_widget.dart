@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'task_model.dart';
 export 'task_model.dart';
 
@@ -79,13 +80,18 @@ class _TaskWidgetState extends State<TaskWidget> {
                       : (newValue) async {
                           safeSetState(() => _model.checkboxValue = newValue!);
                           if (newValue!) {
+                            logFirebaseEvent(
+                                'TASK_COMP_Checkbox_a9j7epfp_ON_TOGGLE_ON');
+                            logFirebaseEvent('Checkbox_execute_callback');
                             await widget.checkAction?.call();
                           }
                         },
-                  side: BorderSide(
-                    width: 2,
-                    color: FlutterFlowTheme.of(context).alternate,
-                  ),
+                  side: (FlutterFlowTheme.of(context).alternate != null)
+                      ? BorderSide(
+                          width: 2,
+                          color: FlutterFlowTheme.of(context).alternate,
+                        )
+                      : null,
                   activeColor: FlutterFlowTheme.of(context).primary,
                   checkColor: widget.completed!
                       ? null
@@ -99,8 +105,18 @@ class _TaskWidgetState extends State<TaskWidget> {
                     'task',
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
                 ),
               ),

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'add_task_model.dart';
 export 'add_task_model.dart';
 
@@ -81,6 +82,8 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                     size: 30.0,
                   ),
                   onPressed: () async {
+                    logFirebaseEvent('ADD_TASK_COMP_close_ICN_ON_TAP');
+                    logFirebaseEvent('IconButton_bottom_sheet');
                     Navigator.pop(context);
                   },
                 ),
@@ -89,8 +92,17 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
             Text(
               'Add Task',
               style: FlutterFlowTheme.of(context).headlineLarge.override(
-                    fontFamily: 'Inter',
+                    font: GoogleFonts.inter(
+                      fontWeight:
+                          FlutterFlowTheme.of(context).headlineLarge.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).headlineLarge.fontStyle,
+                    ),
                     letterSpacing: 0.0,
+                    fontWeight:
+                        FlutterFlowTheme.of(context).headlineLarge.fontWeight,
+                    fontStyle:
+                        FlutterFlowTheme.of(context).headlineLarge.fontStyle,
                   ),
             ),
             Container(
@@ -103,13 +115,34 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
                       ),
                   hintText: 'Title',
                   hintStyle: FlutterFlowTheme.of(context).labelLarge.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -145,8 +178,17 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                       EdgeInsetsDirectional.fromSTEB(24.0, 26.0, 24.0, 26.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
                 cursorColor: FlutterFlowTheme.of(context).primaryText,
                 validator:
@@ -163,13 +205,34 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                 decoration: InputDecoration(
                   isDense: true,
                   labelStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .labelMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
                       ),
                   hintText: 'Details...',
                   hintStyle: FlutterFlowTheme.of(context).labelLarge.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .labelLarge
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).labelLarge.fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelLarge.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelLarge.fontStyle,
                       ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
@@ -205,8 +268,17 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                       EdgeInsetsDirectional.fromSTEB(24.0, 26.0, 24.0, 26.0),
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      fontFamily: 'Inter',
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
                 maxLines: null,
                 minLines: 3,
@@ -217,6 +289,9 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
             ),
             FFButtonWidget(
               onPressed: () async {
+                logFirebaseEvent('ADD_TASK_COMP_ADD_TASK_BTN_ON_TAP');
+                logFirebaseEvent('Button_backend_call');
+
                 await TasksRecord.collection.doc().set(createTasksRecordData(
                       title: valueOrDefault<String>(
                         _model.titleTextController.text,
@@ -230,6 +305,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                       user: currentUserReference,
                       created: getCurrentTimestamp,
                     ));
+                logFirebaseEvent('Button_bottom_sheet');
                 Navigator.pop(context);
               },
               text: 'Add Task',
@@ -244,9 +320,18 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                 iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                 color: FlutterFlowTheme.of(context).primary,
                 textStyle: FlutterFlowTheme.of(context).labelMedium.override(
-                      fontFamily: 'Inter',
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).labelMedium.fontStyle,
+                      ),
                       color: FlutterFlowTheme.of(context).primaryText,
                       letterSpacing: 0.0,
+                      fontWeight:
+                          FlutterFlowTheme.of(context).labelMedium.fontWeight,
+                      fontStyle:
+                          FlutterFlowTheme.of(context).labelMedium.fontStyle,
                     ),
                 elevation: 0.0,
                 borderSide: BorderSide(

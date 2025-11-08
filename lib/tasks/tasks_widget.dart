@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'tasks_model.dart';
 export 'tasks_model.dart';
 
@@ -30,6 +31,7 @@ class _TasksWidgetState extends State<TasksWidget> {
     super.initState();
     _model = createModel(context, () => TasksModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'tasks'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -77,6 +79,8 @@ class _TasksWidgetState extends State<TasksWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('TASKS_PAGE_Icon_f0v6h9jl_ON_TAP');
+                    logFirebaseEvent('Icon_bottom_sheet');
                     await showModalBottomSheet(
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
@@ -116,8 +120,21 @@ class _TasksWidgetState extends State<TasksWidget> {
                 child: Text(
                   'Tasks',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
               ),
@@ -165,6 +182,10 @@ class _TasksWidgetState extends State<TasksWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'TASKS_PAGE_Container_ejn29dpc_ON_TAP');
+                            logFirebaseEvent('task_navigate_to');
+
                             context.pushNamed(
                               DetailsWidget.routeName,
                               queryParameters: {
@@ -187,6 +208,10 @@ class _TasksWidgetState extends State<TasksWidget> {
                             ),
                             completed: listViewTasksRecord.completed,
                             checkAction: () async {
+                              logFirebaseEvent(
+                                  'TASKS_PAGE_Container_ejn29dpc_CALLBACK');
+                              logFirebaseEvent('task_backend_call');
+
                               await listViewTasksRecord.reference
                                   .update(createTasksRecordData(
                                 completed: true,
@@ -201,9 +226,13 @@ class _TasksWidgetState extends State<TasksWidget> {
               ),
               FFButtonWidget(
                 onPressed: () async {
+                  logFirebaseEvent('TASKS_PAGE_LOGOUT_BTN_ON_TAP');
+                  logFirebaseEvent('Button_auth');
                   GoRouter.of(context).prepareAuthEvent();
                   await authManager.signOut();
                   GoRouter.of(context).clearRedirectLocation();
+
+                  logFirebaseEvent('Button_navigate_to');
 
                   context.pushNamedAuth(LoginWidget.routeName, context.mounted);
                 },
@@ -215,9 +244,19 @@ class _TasksWidgetState extends State<TasksWidget> {
                       EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                   color: FlutterFlowTheme.of(context).primary,
                   textStyle: FlutterFlowTheme.of(context).titleSmall.override(
-                        fontFamily: 'Inter Tight',
+                        font: GoogleFonts.interTight(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .titleSmall
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).titleSmall.fontStyle,
+                        ),
                         color: Colors.white,
                         letterSpacing: 0.0,
+                        fontWeight:
+                            FlutterFlowTheme.of(context).titleSmall.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).titleSmall.fontStyle,
                       ),
                   elevation: 0.0,
                   borderRadius: BorderRadius.circular(8.0),

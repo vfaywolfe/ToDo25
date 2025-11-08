@@ -5,6 +5,7 @@ import '/components/task_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'completed_model.dart';
 export 'completed_model.dart';
 
@@ -28,6 +29,7 @@ class _CompletedWidgetState extends State<CompletedWidget> {
     super.initState();
     _model = createModel(context, () => CompletedModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'completed'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -71,6 +73,8 @@ class _CompletedWidgetState extends State<CompletedWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('COMPLETED_PAGE_Icon_00y4l50y_ON_TAP');
+                logFirebaseEvent('Icon_bottom_sheet');
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,
@@ -108,8 +112,21 @@ class _CompletedWidgetState extends State<CompletedWidget> {
                 child: Text(
                   'Completed Tasks',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
-                        fontFamily: 'Inter',
+                        font: GoogleFonts.inter(
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontWeight,
+                          fontStyle: FlutterFlowTheme.of(context)
+                              .headlineMedium
+                              .fontStyle,
+                        ),
                         letterSpacing: 0.0,
+                        fontWeight: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontWeight,
+                        fontStyle: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .fontStyle,
                       ),
                 ),
               ),

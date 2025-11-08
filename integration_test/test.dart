@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:to_do25/flutter_flow/flutter_flow_icon_button.dart';
 import 'package:to_do25/flutter_flow/flutter_flow_widgets.dart';
@@ -31,6 +32,7 @@ void main() async {
     _overrideOnError();
 
     await tester.pumpWidget(const MyApp());
+    await GoogleFonts.pendingFonts();
 
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.enterText(
@@ -48,6 +50,7 @@ void main() async {
     _overrideOnError();
 
     await tester.pumpWidget(const MyApp());
+    await GoogleFonts.pendingFonts();
 
     await tester.pumpAndSettle(const Duration(milliseconds: 5000));
     await tester.tap(find.byKey(const ValueKey('LoginTab_sq9s')));
@@ -92,6 +95,11 @@ bool _shouldIgnoreError(String error) {
   }
   // These errors should be avoided, but they should not break the test.
   if (error.contains('setState() called after dispose()')) {
+    return true;
+  }
+  // Web-specific error when interacting with TextInputType.emailAddress
+  if (error.contains('setSelectionRange') &&
+      error.contains('HTMLInputElement')) {
     return true;
   }
 
